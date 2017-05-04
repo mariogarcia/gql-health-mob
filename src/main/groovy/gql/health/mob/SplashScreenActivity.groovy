@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import com.arasthel.swissknife.annotations.OnBackground
-
+import gql.health.mob.meal.MealListActivity
 import groovy.transform.CompileStatic
 
 @CompileStatic
@@ -22,7 +22,7 @@ class SplashScreenActivity extends Activity {
     @OnBackground
     void startSomethingElse() {
         Thread.sleep(DELAY)
-        startActivity(new Intent(this, MainActivity))
+        startActivity(new Intent(this, MealListActivity))
         finish()
     }
 

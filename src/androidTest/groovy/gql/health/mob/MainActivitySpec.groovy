@@ -4,10 +4,11 @@ import android.app.Activity
 import android.widget.TextView
 import com.andrewreitz.spock.android.AndroidSpecification
 import com.andrewreitz.spock.android.UseActivity
+import gql.health.mob.meal.MealListActivity
 
 class MainActivitySpec extends AndroidSpecification {
 
-    @UseActivity(MainActivity)
+    @UseActivity(MealListActivity)
     Activity mainActivity
 
     void 'check greetings message from main activity'() {

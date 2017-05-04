@@ -17,8 +17,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="gql.health.mob.MainActivity">
+            android:name="gql.health.mob.meal.MealListActivity">
         </activity>
+        <activity android:name=".meal.MealNewActivity"></activity>
+        <activity android:name=".meal.MealNewEntryActivity"></activity>
     </application>
 
 </manifest>
