@@ -1,35 +1,54 @@
 package gql.health.mob.meal
 
-import android.app.ListActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.ListAdapter
 import com.arasthel.swissknife.SwissKnife
+import com.arasthel.swissknife.annotations.InjectView
 import com.arasthel.swissknife.annotations.OnBackground
 import com.arasthel.swissknife.annotations.OnClick
 import com.arasthel.swissknife.annotations.OnUIThread
 import gql.health.mob.R
 import gql.health.mob.ui.Activities
+import gql.health.mob.ui.SimpleDividerItemDecoration
 import groovy.transform.CompileStatic
 
 @CompileStatic
-class MealListActivity extends ListActivity {
+class MealListActivity extends AppCompatActivity {
 
     static final List<String> MEAL_TYPES = ["BREAKFAST", "LUNCH", "DINNER", "IN_BETWEEN"]
+
+    @InjectView(R.id.recyclerview)
+    RecyclerView recyclerView
       
     @Override
     void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.meal_list)
         SwissKnife.inject(this)
-        MealListAdapter adapter =
-                new MealListAdapter(
-                        this,
-                        R.layout.meal_list_item,
-                        [])
 
-        setListAdapter(adapter)
+        recyclerView.hasFixedSize = true
+        recyclerView.setLayoutManager(new LinearLayoutManager(this))
+        recyclerView.adapter = new MealListAdapter([], this)
+        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(this))
+
         loadMeals()
+//        addItemListener()
+    }
+
+    @OnUIThread
+    void addItemListener() {
+
+//        listView.setOnItemClickListener({ AdapterView parent, View view, int position, long id ->
+//            Meal meal = parent.getItemAtPosition(position) as Meal
+//            Activities.startActivityWithExtra(
+//                    this,
+//                    MealNewActivity,
+//                    "meal",
+//                    meal)
+//        } as AdapterView.OnItemClickListener)
     }
 
     @Override
@@ -45,10 +64,10 @@ class MealListActivity extends ListActivity {
 
     @OnUIThread
     void paintMealList(List meals) {
-        MealListAdapter adapter = listAdapter as MealListAdapter
+        MealListAdapter adapter = recyclerView.adapter as MealListAdapter
 
-        adapter.clear()
-        adapter.addAll(meals)
+        adapter.meals.clear()
+        adapter.meals.addAll(meals)
         adapter.notifyDataSetChanged()
     }
 

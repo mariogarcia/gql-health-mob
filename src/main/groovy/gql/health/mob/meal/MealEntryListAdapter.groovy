@@ -1,31 +1,63 @@
 package gql.health.mob.meal
 
 import android.content.Context
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.TextView
 import gql.health.mob.R
 import groovy.transform.CompileStatic
 import groovy.transform.InheritConstructors
+import groovy.transform.TupleConstructor
 
 @CompileStatic
-@InheritConstructors
-class MealEntryListAdapter extends ArrayAdapter<MealEntry> {
+@TupleConstructor
+class MealEntryListAdapter extends RecyclerView.Adapter<MealEntryListAdapter.ViewHolder> {
 
-    View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        View rowView = inflater.inflate(R.layout.meal_entry_list_item, parent, false)
+    List<MealEntry> entries = []
+    Context context
 
-        TextView description = rowView.findViewById(R.id.meal_item_list_item_description) as TextView
-        TextView quantityText = rowView.findViewById(R.id.meal_item_list_item_units) as TextView
+    @Override
+    ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //Inflate the layout, initialize the View Holder
+        View v = LayoutInflater
+                .from(parent.getContext())
+                .inflate(R.layout.meal_entry_list_item, parent, false)
 
-        MealEntry entry = this.getItem(position)
+        ViewHolder holder = new ViewHolder(v)
 
-        description.text = entry.description
-        quantityText.text = "${entry.quantity} ${entry.unit}"
+        return holder
+    }
 
-        return rowView
+    @Override
+    void onBindViewHolder(ViewHolder holder, int position) {
+        //Use the provided View Holder on the onCreateViewHolder method to populate the current row on the RecyclerView
+        MealEntry entry = entries[position]
+
+        holder.description.text = entry.description.capitalize()
+        holder.quantity.text = "${entry.quantity} ${entry.unit}"
+
+        //holder.imageView.setImageResource(list.get(position).imageId);
+    }
+
+    @Override
+    int getItemCount() {
+        return entries.size()
+    }
+
+    @InheritConstructors
+    static class ViewHolder extends RecyclerView.ViewHolder {
+
+        TextView description
+        TextView quantity
+
+        ViewHolder(View view) {
+            super(view)
+
+            description = view.findViewById(R.id.meal_item_list_item_description) as TextView
+            quantity = view.findViewById(R.id.meal_item_list_item_units) as TextView
+        }
+
     }
 }
