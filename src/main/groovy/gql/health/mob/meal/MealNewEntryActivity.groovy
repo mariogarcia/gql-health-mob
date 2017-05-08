@@ -1,7 +1,7 @@
 package gql.health.mob.meal
 
-import android.app.Activity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -16,10 +16,16 @@ import gql.health.mob.ui.Activities
 import groovy.transform.CompileStatic
 
 @CompileStatic
-class MealNewEntryActivity extends Activity {
+class MealNewEntryActivity extends AppCompatActivity {
 
     @InjectView(R.id.meal_item_unit_type)
     Spinner spinner
+
+    @InjectView(R.id.meal_item_description)
+    TextView description
+
+    @InjectView(R.id.meal_item_how_many)
+    TextView howMany
 
     @Override
     void onCreate(Bundle savedInstanceState) {
@@ -32,7 +38,11 @@ class MealNewEntryActivity extends Activity {
     @OnUIThread
     void loadEntryTypes() {
         ArrayAdapter<String> spinnerAdapter =
-                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ['GRAM', 'UNIT'])
+            new ArrayAdapter<>(
+                this,
+                R.layout.dropdown_item,
+                ['GRAM', 'UNIT'] as String[]
+            )
 
         spinner.adapter = spinnerAdapter
     }
@@ -41,10 +51,6 @@ class MealNewEntryActivity extends Activity {
     @OnClick(R.id.entry_item_button_save)
     void saveEntry(View view) {
         Meal meal = Activities.getExtraSerializable(this, Meal, "meal")
-
-        TextView description = this.findViewById(R.id.meal_item_description) as TextView
-        TextView howMany = this.findViewById(R.id.meal_item_how_many) as TextView
-
         MealEntry entry = new MealEntry(
                 id: UUID.randomUUID(),
                 description: description.text,

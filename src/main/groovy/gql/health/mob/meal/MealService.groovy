@@ -36,6 +36,12 @@ class MealService {
         copiedMeal
     }
 
+    Meal updateMeal(Meal meal) {
+        removeMeal(meal.id)
+
+        return addMeal(meal)
+    }
+
     Meal removeEntryById(UUID mealId, UUID entryId) {
         Meal meal = findMealById(mealId)
         MealEntry entry = meal

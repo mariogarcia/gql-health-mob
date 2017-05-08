@@ -8,5 +8,6 @@
     <string name="about_descrip">This is an Android app written in Groovy</string>
     <string name="action_delete_entry">Delete Entry</string>
     <string name="action_add_entry">Add</string>
+    <string name="breakfast">breakfast</string>
 
 </resources>

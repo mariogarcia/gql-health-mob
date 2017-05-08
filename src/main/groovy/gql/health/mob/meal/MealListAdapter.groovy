@@ -34,7 +34,7 @@ class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder> {
         Meal meal = meals[position]
 
         holder.date.text = meal.date
-        holder.type.text = meal.type
+        holder.type.text = meal.type.toLowerCase().capitalize()
         holder.summary.text = meal.entries.description.collect().join(" + ")
 
         holder.itemView.onClickListener = { View view ->

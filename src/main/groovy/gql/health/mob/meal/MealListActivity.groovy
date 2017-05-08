@@ -32,23 +32,8 @@ class MealListActivity extends AppCompatActivity {
         recyclerView.hasFixedSize = true
         recyclerView.setLayoutManager(new LinearLayoutManager(this))
         recyclerView.adapter = new MealListAdapter([], this)
-        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(this))
 
         loadMeals()
-//        addItemListener()
-    }
-
-    @OnUIThread
-    void addItemListener() {
-
-//        listView.setOnItemClickListener({ AdapterView parent, View view, int position, long id ->
-//            Meal meal = parent.getItemAtPosition(position) as Meal
-//            Activities.startActivityWithExtra(
-//                    this,
-//                    MealNewActivity,
-//                    "meal",
-//                    meal)
-//        } as AdapterView.OnItemClickListener)
     }
 
     @Override
