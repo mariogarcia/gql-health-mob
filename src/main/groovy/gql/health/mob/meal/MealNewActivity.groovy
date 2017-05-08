@@ -88,12 +88,7 @@ class MealNewActivity extends AppCompatActivity implements DrawableAware, ImageA
     @OnBackground
     @OnClick(R.id.button_meal_entry_new)
     void createNewEntry(View view) {
-        openNewEntry(currentMeal)
-    }
-
-    @OnUIThread
-    void openNewEntry(Meal savedMeal) {
-        Activities.startActivityWithExtra(this, MealNewEntryActivity, "meal", savedMeal)
+        Activities.startActivityWithExtra(this, MealNewEntryActivity, "meal", currentMeal)
     }
 
     @OnBackground
@@ -106,23 +101,21 @@ class MealNewActivity extends AppCompatActivity implements DrawableAware, ImageA
     @OnClick(R.id.button_meal_photo)
     void takePicture() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File file = createImageFile().getAbsolutePath() as File
-        Meal savedMeal = currentMeal
-                .copyWith(image: Uri.fromFile(file))
+        File pictureAbsolutePath = createImageFile().getAbsolutePath() as File
+        Meal savedMeal = currentMeal.copyWith(image: Uri.fromFile(pictureAbsolutePath))
 
         MealService.INSTANCE.updateMeal(savedMeal)
 
         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, savedMeal.image);
-        startActivityForResult(takePictureIntent, 1);
+        startActivityForResult(takePictureIntent, IMAGE_KEY);
     }
 
     @Override
     void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
+        if (requestCode == IMAGE_KEY) {
             Meal meal = MealService.INSTANCE.findMealById(currentMeal.id)
-            String imagePath = meal.image.toString() - "file://"
 
-            loadPicFromPathInto(imagePath, imageView)
+            loadPicFromPathInto(meal.image.path, imageView)
         }
     }
 

@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat
 trait ImageAware {
 
     static final String ALBUM_NAME = 'helthix'
+    static final int IMAGE_KEY = 1
 
     private File getAlbumDir() {
         File storageDir = null;
