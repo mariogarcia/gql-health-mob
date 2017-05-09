@@ -1,37 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="72dp"
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="72dp"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:gravity="center">
 
-        <android.support.v7.widget.AppCompatCheckBox
-            android:layout_width="50dp"
-            android:layout_height="match_parent" />
+        <LinearLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp">
+            <gql.health.mob.ui.MLRoundedImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_orange"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
     <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/meal_item_list_item_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            style="@style/TextAppearance.AppCompat.Title"
             android:text="Pavo plancha"
-            android:ellipsize="end"/>
+            android:textSize="16sp"
+            android:layout_marginBottom="2dp"/>
 
         <TextView
             android:id="@+id/meal_item_list_item_units"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="200 GRAM" />
-
+            android:layout_height="wrap_content"
+            android:text="200g"
+            android:textSize="14sp" />
     </LinearLayout>
-        </LinearLayout>
+
+
+
+
+
+
+
 </LinearLayout>

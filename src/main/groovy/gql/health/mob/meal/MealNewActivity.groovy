@@ -9,6 +9,7 @@ import android.support.design.widget.CollapsingToolbarLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import com.arasthel.swissknife.SwissKnife
@@ -49,20 +50,23 @@ class MealNewActivity extends AppCompatActivity implements DrawableAware, ImageA
     }
 
     @Override
-    protected void onResume() {
+    void onResume() {
         super.onResume()
         loadInformation()
     }
 
     @OnBackground
     void loadInformation() {
-        Meal refreshed = MealService.INSTANCE.findMealById(currentMeal.id)
+        Log.i("Background", "loadInformation")
 
+        Meal refreshed = MealService.INSTANCE.findMealById(currentMeal.id)
         paintInformation(refreshed)
     }
 
     @OnUIThread
     void paintInformation(Meal meal) {
+        Log.i("UIThread", "paintInformation [$meal]")
+
         collapsingToolbarLayout.title = meal.type.toLowerCase().capitalize()
 
         if (!meal.image) {
