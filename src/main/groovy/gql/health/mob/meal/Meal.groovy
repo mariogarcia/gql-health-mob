@@ -8,6 +8,6 @@ class Meal implements Serializable {
     UUID id
     String type
     String date
-    Uri image
+    String imagePath
     List<MealEntry> entries
 }

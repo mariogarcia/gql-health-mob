@@ -45,7 +45,7 @@ trait ImageAware {
         final String JPEG_FILE_PREFIX = "IMG_";
         final String JPEG_FILE_SUFFIX = ".jpg";
 
-        // Create an image file name
+        // Create an imagePath file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = JPEG_FILE_PREFIX + timeStamp + "_";
         File albumF = getAlbumDir();
@@ -53,7 +53,7 @@ trait ImageAware {
         return imageF;
     }
 
-    void loadPicFromPathInto(String path, ImageView imageView) {
+    void  loadPicFromPathInto(String path, ImageView imageView) {
 
         /* There isn't enough memory to open up more than a couple camera photos */
         /* So pre-scale the target bitmap into which the file is decoded */
@@ -62,7 +62,7 @@ trait ImageAware {
         int targetW = imageView.getWidth();
         int targetH = imageView.getHeight();
 
-        /* Get the size of the image */
+        /* Get the size of the imagePath */
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         bmOptions.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(path, bmOptions);
@@ -77,7 +77,7 @@ trait ImageAware {
                     (photoH/targetH) as double).intValue()
         }
 
-        /* Set bitmap options to scale the image decode target */
+        /* Set bitmap options to scale the imagePath decode target */
         bmOptions.inJustDecodeBounds = false;
         bmOptions.inSampleSize = scaleFactor;
         bmOptions.inPurgeable = true;

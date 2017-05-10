@@ -1,7 +1,6 @@
 package gql.health.mob.meal
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -69,8 +68,10 @@ class MealNewActivity extends AppCompatActivity implements DrawableAware, ImageA
 
         collapsingToolbarLayout.title = meal.type.toLowerCase().capitalize()
 
-        if (!meal.image) {
-            imageView.imageDrawable = resolveDrawable(meal.type)
+        if (meal.imagePath) {
+            loadPicFromPathInto(meal.imagePath, imageView)
+        } else {
+            imageView.imageDrawable = resolveDrawable(this, meal.type)
         }
 
         MealEntryListAdapter adapter = recyclerView.adapter as MealEntryListAdapter
@@ -78,15 +79,6 @@ class MealNewActivity extends AppCompatActivity implements DrawableAware, ImageA
         adapter.entries.clear()
         adapter.entries.addAll(meal.entries)
         adapter.notifyDataSetChanged()
-    }
-
-    Drawable resolveDrawable(String type) {
-        switch(type.toLowerCase()) {
-            case 'lunch':      return findDrawableById(R.mipmap.ic_lunch)
-            case 'dinner':     return findDrawableById(R.mipmap.ic_dinner)
-            case 'breakfast':  return findDrawableById(R.mipmap.ic_breakfast)
-            case 'in_between': return findDrawableById(R.mipmap.ic_in_between)
-        }
     }
 
     @OnBackground
@@ -104,13 +96,13 @@ class MealNewActivity extends AppCompatActivity implements DrawableAware, ImageA
     @OnBackground
     @OnClick(R.id.button_meal_photo)
     void takePicture() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File pictureAbsolutePath = createImageFile().getAbsolutePath() as File
-        Meal savedMeal = currentMeal.copyWith(image: Uri.fromFile(pictureAbsolutePath))
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        Uri imageUri = Uri.fromFile(createImageFile())
+        Meal savedMeal = currentMeal.copyWith(imagePath: imageUri.path)
 
         MealService.INSTANCE.updateMeal(savedMeal)
 
-        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, savedMeal.image);
+        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
         startActivityForResult(takePictureIntent, IMAGE_KEY);
     }
 
@@ -119,7 +111,7 @@ class MealNewActivity extends AppCompatActivity implements DrawableAware, ImageA
         if (requestCode == IMAGE_KEY) {
             Meal meal = MealService.INSTANCE.findMealById(currentMeal.id)
 
-            loadPicFromPathInto(meal.image.path, imageView)
+            loadPicFromPathInto(meal.imagePath, imageView)
         }
     }
 

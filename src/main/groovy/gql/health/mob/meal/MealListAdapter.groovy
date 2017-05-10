@@ -6,16 +6,19 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import gql.health.mob.R
 import gql.health.mob.ui.Activities
+import gql.health.mob.ui.ImageAware
 import groovy.transform.CompileStatic
 import groovy.transform.InheritConstructors
 import groovy.transform.TupleConstructor
 
 @CompileStatic
 @TupleConstructor
-class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder> {
+class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder>
+        implements ImageAware, DrawableAware {
 
     List<Meal> meals
     Context context
@@ -37,6 +40,12 @@ class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder> {
         holder.type.text = meal.type.toLowerCase().capitalize()
         holder.summary.text = meal.entries.description.collect().join(" + ")
 
+        if (meal.imagePath) {
+            loadPicFromPathInto(meal.imagePath, holder.imageView)
+        } else {
+            holder.imageView.imageDrawable = resolveDrawable(this.context, meal.type)
+        }
+
         holder.itemView.onClickListener = { View view ->
             Activities.startActivityWithExtra((Activity)view.context, MealNewActivity, "meal", meal)
         }
@@ -52,6 +61,7 @@ class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder> {
         TextView date
         TextView type
         TextView summary
+        ImageView imageView
 
         ViewHolder(View rowView) {
             super(rowView)
@@ -59,6 +69,7 @@ class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder> {
             date = rowView.findViewById(R.id.meal_list_item_when) as TextView
             type = rowView.findViewById(R.id.meal_list_item_type) as TextView
             summary = rowView.findViewById(R.id.meal_list_item_summary) as TextView
+            imageView = rowView.findViewById(R.id.thumbnail) as ImageView
         }
     }
 }
