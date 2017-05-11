@@ -2,6 +2,7 @@ package gql.health.mob.ui
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 
@@ -18,7 +19,7 @@ class Activities {
         builder.create()
     }
 
-    static void startActivityWithExtra(Activity from, Class<? extends Activity> to, String key, Serializable serializable) {
+    static void startActivityWithExtra(Context from, Class<? extends Activity> to, String key, Serializable serializable) {
         Intent intent = new Intent(from, to)
         intent.putExtra(key, serializable)
 

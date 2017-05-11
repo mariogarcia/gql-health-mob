@@ -13,27 +13,57 @@
         android:padding="16dp"
         android:layout_weight="1">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripcion"
+            android:labelFor="@+id/meal_item_description"/>
+
         <EditText
             android:id="@+id/meal_item_description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint="Description"
             android:textColor="@color/font_primary"
             android:textColorHint="@color/font_secondary"
             android:textSize="28sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cantidad"
+            android:labelFor="@+id/meal_item_how_many"/>
 
         <EditText
             android:id="@+id/meal_item_how_many"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="How many"
+            android:hint="0"
+            android:inputType="number"
             android:textColor="@color/font_primary"
             android:textColorHint="@color/font_secondary"
             android:textSize="28sp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unidad"
+            android:labelFor="@+id/meal_item_unit_type"/>
+
         <Spinner
             android:id="@+id/meal_item_unit_type"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="45dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de alimento"
+            android:labelFor="@+id/meal_item_food_type"/>
+
+        <Spinner
+            android:id="@+id/meal_item_food_type"
             android:layout_width="fill_parent"
             android:layout_marginTop="10dp"
             android:layout_height="45dp" />

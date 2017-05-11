@@ -7,5 +7,6 @@ class MealEntry implements Serializable {
     UUID id
     String description
     Double quantity
-    String unit
+    QuantityType quantityType
+    FoodType foodType
 }

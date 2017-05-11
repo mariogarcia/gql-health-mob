@@ -1,6 +1,5 @@
 package gql.health.mob.meal
 
-import android.app.Activity
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -36,18 +35,18 @@ class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder>
     void onBindViewHolder(ViewHolder holder, int position) {
         Meal meal = meals[position]
 
-        holder.date.text = meal.date
+        holder.date.text = meal.date.format('dd/MM/yyyy HH:mm')
         holder.type.text = meal.type.toLowerCase().capitalize()
         holder.summary.text = meal.entries.description.collect().join(" + ")
 
         if (meal.imagePath) {
             loadPicFromPathInto(meal.imagePath, holder.imageView)
         } else {
-            holder.imageView.imageDrawable = resolveDrawable(this.context, meal.type)
+            holder.imageView.imageDrawable = findDrawableById(this.context, R.mipmap.ic_meal_default)
         }
 
         holder.itemView.onClickListener = { View view ->
-            Activities.startActivityWithExtra((Activity)view.context, MealNewActivity, "meal", meal)
+            Activities.startActivityWithExtra(view.context, MealNewActivity, "meal", meal)
         }
     }
 

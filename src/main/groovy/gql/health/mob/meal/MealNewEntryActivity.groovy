@@ -19,7 +19,10 @@ import groovy.transform.CompileStatic
 class MealNewEntryActivity extends AppCompatActivity {
 
     @InjectView(R.id.meal_item_unit_type)
-    Spinner spinner
+    Spinner unitType
+
+    @InjectView(R.id.meal_item_food_type)
+    Spinner foodType
 
     @InjectView(R.id.meal_item_description)
     TextView description
@@ -37,14 +40,22 @@ class MealNewEntryActivity extends AppCompatActivity {
 
     @OnUIThread
     void loadEntryTypes() {
-        ArrayAdapter<String> spinnerAdapter =
+        ArrayAdapter<QuantityType> spinnerAdapter =
             new ArrayAdapter<>(
                 this,
                 R.layout.dropdown_item,
-                ['GRAM', 'UNIT'] as String[]
+                QuantityType.values() as QuantityType[]
             )
 
-        spinner.adapter = spinnerAdapter
+        unitType.adapter = spinnerAdapter
+        ArrayAdapter<FoodType> foodAdapter =
+                new ArrayAdapter<>(
+                        this,
+                        R.layout.dropdown_item,
+                        FoodType.values() as FoodType[]
+                )
+
+        foodType.adapter = foodAdapter
     }
 
     @OnBackground
@@ -54,10 +65,12 @@ class MealNewEntryActivity extends AppCompatActivity {
         MealEntry entry = new MealEntry(
                 id: UUID.randomUUID(),
                 description: description.text,
-                unit: spinner.selectedItem.toString(),
-                quantity: howMany.text.toDouble())
+                quantityType: unitType.selectedItem as QuantityType,
+                quantity: howMany.text.toDouble(),
+                foodType: foodType.selectedItem as FoodType)
 
         MealService.INSTANCE.addEntry(meal.id, entry)
+
         this.finish()
     }
 

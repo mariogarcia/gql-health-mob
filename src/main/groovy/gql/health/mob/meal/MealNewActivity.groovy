@@ -71,7 +71,7 @@ class MealNewActivity extends AppCompatActivity implements DrawableAware, ImageA
         if (meal.imagePath) {
             loadPicFromPathInto(meal.imagePath, imageView)
         } else {
-            imageView.imageDrawable = resolveDrawable(this, meal.type)
+            imageView.imageDrawable = findDrawableById(this, R.mipmap.ic_meal_default)
         }
 
         MealEntryListAdapter adapter = recyclerView.adapter as MealEntryListAdapter
@@ -108,10 +108,13 @@ class MealNewActivity extends AppCompatActivity implements DrawableAware, ImageA
 
     @Override
     void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == IMAGE_KEY) {
-            Meal meal = MealService.INSTANCE.findMealById(currentMeal.id)
+        if (requestCode == IMAGE_KEY && resultCode == 0) {
+            def updatedMeal = MealService
+                .INSTANCE
+                .findMealById(currentMeal.id)
+                .copyWith(imagePath: null)
 
-            loadPicFromPathInto(meal.imagePath, imageView)
+            MealService.INSTANCE.updateMeal(updatedMeal)
         }
     }
 

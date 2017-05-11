@@ -69,7 +69,7 @@ class MealListActivity extends AppCompatActivity {
                     entries: [],
                     id: UUID.randomUUID(),
                     type: selected,
-                    date: new Date().format('dd/MM/yyyy'))
+                    date: new Date())
 
             Meal savedMeal = MealService.INSTANCE.addMeal(meal)
             Activities.startActivityWithExtra(this, MealNewActivity, "meal", savedMeal)

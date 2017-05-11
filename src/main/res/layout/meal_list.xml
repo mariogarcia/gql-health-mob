@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="20dp"
-        android:background="@drawable/big_button_primary"
         android:src="@drawable/ic_add_circle_outline_black_24dp"/>
 
 </android.support.design.widget.CoordinatorLayout>
