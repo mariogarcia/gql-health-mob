@@ -98,7 +98,10 @@ class MealNewActivity extends AppCompatActivity implements DrawableAware, ImageA
     void takePicture() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         Uri imageUri = Uri.fromFile(createImageFile())
-        Meal savedMeal = currentMeal.copyWith(imagePath: imageUri.path)
+        Meal savedMeal = MealService
+                .INSTANCE
+                .findMealById(currentMeal.id)
+                .copyWith(imagePath: imageUri.path)
 
         MealService.INSTANCE.updateMeal(savedMeal)
 
