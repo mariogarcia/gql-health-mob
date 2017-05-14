@@ -8,12 +8,12 @@ import android.content.Intent
 
 class Activities {
 
-    static AlertDialog createOptionsDialog(Activity activity, String title, List<String> options, Closure dsl) {
+    static AlertDialog createOptionsDialog(Activity activity, String title, String[] options, Closure dsl) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity)
         builder.title = title
-        builder.setItems(options as String[], { DialogInterface di, int which ->
+        builder.setItems(options, { DialogInterface di, int which ->
             di.dismiss()
-            dsl(options.get(which))
+            dsl(options[which])
         } as DialogInterface.OnClickListener)
 
         builder.create()

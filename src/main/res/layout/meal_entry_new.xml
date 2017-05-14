@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripcion"
+            android:text="@string/label_description"
             android:labelFor="@+id/meal_item_description"/>
 
         <EditText
@@ -31,14 +31,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cantidad"
+            android:text="@string/label_quantity"
             android:labelFor="@+id/meal_item_how_many"/>
 
         <EditText
             android:id="@+id/meal_item_how_many"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="0"
+            android:hint="@string/label_quantity_hint"
             android:inputType="number"
             android:textColor="@color/font_primary"
             android:textColorHint="@color/font_secondary"
@@ -47,7 +47,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Unidad"
+            android:text="@string/label_unit_type"
             android:labelFor="@+id/meal_item_unit_type"/>
 
         <Spinner
@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tipo de alimento"
+            android:text="@string/label_type_of_food"
             android:labelFor="@+id/meal_item_food_type"/>
 
         <Spinner

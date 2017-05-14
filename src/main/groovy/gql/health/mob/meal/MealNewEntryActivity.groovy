@@ -13,6 +13,7 @@ import com.arasthel.swissknife.annotations.OnClick
 import com.arasthel.swissknife.annotations.OnUIThread
 import gql.health.mob.R
 import gql.health.mob.ui.Activities
+import gql.health.mob.util.I18n
 
 class MealNewEntryActivity extends AppCompatActivity {
 

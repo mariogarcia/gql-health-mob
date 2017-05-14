@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Healthyx</string>
+    <string name="hello">Groovy y Android :)</string>
+
+    <string name="action_delete_entry">Borrar ingrediente</string>
+    <string name="action_add_entry">Agregar</string>
+    <string name="breakfast">Desayuno</string>
+    <string name="label_description">Descripcion</string>
+    <string name="label_quantity">Cantidad</string>
+    <string name="label_unit_type">Unidad</string>
+    <string name="label_type_of_food">Tipo de alimento</string>
+    <string name="label_quantity_hint">0</string>
+    <string name="meal_list_empty_message">Add your first meal</string>
+
+    <string-array name="meal_types">
+        <item>Desayuno</item>
+        <item>Snack</item>
+        <item>Comida</item>
+        <item>Cena</item>
+    </string-array>
+</resources>

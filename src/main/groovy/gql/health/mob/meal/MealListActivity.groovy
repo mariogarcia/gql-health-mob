@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.TextView
 import com.arasthel.swissknife.SwissKnife
 import com.arasthel.swissknife.annotations.InjectView
 import com.arasthel.swissknife.annotations.OnBackground
@@ -15,10 +16,11 @@ import gql.health.mob.ui.Activities
 
 class MealListActivity extends AppCompatActivity {
 
-    static final List<String> MEAL_TYPES = ["BREAKFAST", "LUNCH", "DINNER", "IN_BETWEEN"]
-
     @InjectView(R.id.recyclerview)
     RecyclerView recyclerView
+
+    @InjectView(R.id.empty_list_message)
+    TextView textView
       
     @Override
     void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,10 @@ class MealListActivity extends AppCompatActivity {
         adapter.meals.clear()
         adapter.meals.addAll(meals)
         adapter.notifyDataSetChanged()
+
+        if (meals) {
+            textView.visible(false)
+        }
     }
 
     @OnBackground
@@ -61,7 +67,8 @@ class MealListActivity extends AppCompatActivity {
 
     @OnUIThread
     void showPrompt() {
-        def dialog = Activities.createOptionsDialog(this, "Select meal type:", MEAL_TYPES) { String selected ->
+        def mealTypes = resources.getStringArray(R.array.meal_types)
+        def dialog = Activities.createOptionsDialog(this, "Select meal type:", mealTypes) { String selected ->
             Meal meal = new Meal(
                     entries: [],
                     id: UUID.randomUUID(),

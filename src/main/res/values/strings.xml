@@ -9,5 +9,18 @@
     <string name="action_delete_entry">Delete Entry</string>
     <string name="action_add_entry">Add</string>
     <string name="breakfast">breakfast</string>
+    <string name="label_description">Description</string>
+    <string name="label_quantity">Quantity</string>
+    <string name="label_unit_type">Unit type</string>
+    <string name="label_type_of_food">Type of food</string>
+    <string name="label_quantity_hint">0</string>
+    <string name="meal_list_empty_message">Add your first meal</string>
+
+    <string-array name="meal_types">
+        <item>Breakfast</item>
+        <item>Snack</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+    </string-array>
 
 </resources>
