@@ -10,11 +10,9 @@ import android.widget.TextView
 import gql.health.mob.R
 import gql.health.mob.ui.Activities
 import gql.health.mob.ui.ImageAware
-import groovy.transform.CompileStatic
 import groovy.transform.InheritConstructors
 import groovy.transform.TupleConstructor
 
-@CompileStatic
 @TupleConstructor
 class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder>
         implements ImageAware, DrawableAware {

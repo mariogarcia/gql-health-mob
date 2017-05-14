@@ -13,9 +13,7 @@ import com.arasthel.swissknife.annotations.OnClick
 import com.arasthel.swissknife.annotations.OnUIThread
 import gql.health.mob.R
 import gql.health.mob.ui.Activities
-import groovy.transform.CompileStatic
 
-@CompileStatic
 class MealNewEntryActivity extends AppCompatActivity {
 
     @InjectView(R.id.meal_item_unit_type)

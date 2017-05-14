@@ -20,9 +20,7 @@ import gql.health.mob.R
 import gql.health.mob.ui.Activities
 import gql.health.mob.ui.ImageAware
 import gql.health.mob.ui.SimpleDividerItemDecoration
-import groovy.transform.CompileStatic
 
-@CompileStatic
 class MealNewActivity extends AppCompatActivity implements DrawableAware, ImageAware {
 
     @InjectView(R.id.recyclerview)

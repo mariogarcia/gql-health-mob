@@ -14,7 +14,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_meal_default"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat.Light">
+        android:theme="@style/HelthyxTheme">
         <activity
             android:name="gql.health.mob.SplashScreenActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"

@@ -6,15 +6,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import gql.health.mob.R
 import gql.health.mob.ui.MLRoundedImageView
-import groovy.transform.CompileStatic
 import groovy.transform.InheritConstructors
 import groovy.transform.TupleConstructor
 
-@CompileStatic
 @TupleConstructor
 class MealEntryListAdapter extends RecyclerView.Adapter<MealEntryListAdapter.ViewHolder>
    implements DrawableAware {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -72,20 +72,16 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/entry_item_button_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
         android:layout_marginBottom="90dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/ic_undo_black_24dp"/>
+        android:src="@drawable/ic_undo_black_24dp"
+        style="@style/FloatingActionButton"
+        app:backgroundTint="@color/floating_button_background" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/entry_item_button_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
         android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/ic_save_black_24dp"/>
+        android:src="@drawable/ic_save_black_24dp"
+        style="@style/FloatingActionButton"
+        app:backgroundTint="@color/floating_button_background"/>
 
 </android.support.design.widget.CoordinatorLayout>

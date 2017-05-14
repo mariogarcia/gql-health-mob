@@ -62,28 +62,23 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/button_meal_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
         android:layout_marginBottom="160dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/ic_undo_black_24dp"/>
+        android:src="@drawable/ic_undo_black_24dp"
+        app:backgroundTint="@color/floating_button_background"
+        style="@style/FloatingActionButton"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/button_meal_photo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
         android:layout_marginBottom="90dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/ic_add_a_photo_black_24dp"/>
+        android:src="@drawable/ic_add_a_photo_black_24dp"
+        app:backgroundTint="@color/floating_button_background"
+        style="@style/FloatingActionButton" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/button_meal_entry_new"
         android:src="@drawable/ic_add_circle_outline_black_24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="20dp"/>
+        android:layout_marginBottom="20dp"
+        app:backgroundTint="@color/floating_button_background"
+        style="@style/FloatingActionButton"/>
 </android.support.design.widget.CoordinatorLayout>
 

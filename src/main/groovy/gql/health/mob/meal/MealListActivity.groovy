@@ -12,10 +12,7 @@ import com.arasthel.swissknife.annotations.OnClick
 import com.arasthel.swissknife.annotations.OnUIThread
 import gql.health.mob.R
 import gql.health.mob.ui.Activities
-import gql.health.mob.ui.SimpleDividerItemDecoration
-import groovy.transform.CompileStatic
 
-@CompileStatic
 class MealListActivity extends AppCompatActivity {
 
     static final List<String> MEAL_TYPES = ["BREAKFAST", "LUNCH", "DINNER", "IN_BETWEEN"]

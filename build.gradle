@@ -11,14 +11,22 @@ buildscript {
 apply plugin: 'com.android.application'
 apply plugin: 'groovyx.android'
 
+androidGroovy {
+    options {
+        configure(groovyOptions) {
+            groovyOptions.configurationScript = new File(projectDir, "src/conf/compiler.groovy")
+        }
+    }
+}
+
 android {
 
     compileSdkVersion 25
     buildToolsVersion '25.0.0'
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 21
+        minSdkVersion 21
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
 

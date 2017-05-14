@@ -12,9 +12,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.widget.ImageView
-import groovy.transform.CompileStatic
 
-@CompileStatic
 public class MLRoundedImageView extends ImageView {
 
     public MLRoundedImageView(Context context) {

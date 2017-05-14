@@ -8,11 +8,9 @@ import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import groovy.transform.CompileStatic
 
 import java.text.SimpleDateFormat
 
-@CompileStatic
 trait ImageAware {
 
     static final String ALBUM_NAME = 'helthix'

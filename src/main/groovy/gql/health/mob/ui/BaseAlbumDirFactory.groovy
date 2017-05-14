@@ -1,8 +1,6 @@
 package gql.health.mob.ui
 
-import java.io.File;
-
-import android.os.Environment;
+import android.os.Environment
 
 public final class BaseAlbumDirFactory extends AlbumStorageDirFactory {
 
@@ -10,11 +8,7 @@ public final class BaseAlbumDirFactory extends AlbumStorageDirFactory {
 	private static final String CAMERA_DIR = "/dcim/";
 
 	@Override
-	public File getAlbumStorageDir(String albumName) {
-		return new File (
-				Environment.getExternalStorageDirectory()
-				+ CAMERA_DIR
-				+ albumName
-		);
+	File getAlbumStorageDir(String albumName) {
+		"${Environment.getExternalStorageDirectory()}${CAMERA_DIR}${albumName}" as File
 	}
 }
