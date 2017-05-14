@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="HelthyxTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-
+        <item name="android:selectableItemBackground">@color/row_background_selected</item>
 
 
     </style>

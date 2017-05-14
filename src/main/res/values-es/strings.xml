@@ -14,6 +14,7 @@
     <string name="label_quantity_hint">0</string>
     <string name="meal_list_empty_message">Add your first meal</string>
 
+    <string name="action_mode_select_entries">Seleccionados</string>
     <string-array name="meal_types">
         <item>Desayuno</item>
         <item>Snack</item>
