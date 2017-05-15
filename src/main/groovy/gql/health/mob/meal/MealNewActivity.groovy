@@ -79,11 +79,11 @@ class MealNewActivity extends AppCompatActivity implements
     void paintInformation(Meal meal) {
         collapsingToolbarLayout.title = meal.type.toLowerCase().capitalize()
 
-        if (meal.imagePath) {
-            loadPicFromPathInto(meal.imagePath, imageView)
-        } else {
-            imageView.imageDrawable = findDrawableById(this, R.mipmap.ic_meal_default)
-        }
+        paintImageOrDrawable(
+            this,
+            meal.imagePath,
+            imageView,
+            findDrawableById(this, R.mipmap.ic_meal_default))
     }
 
     @OnBackground

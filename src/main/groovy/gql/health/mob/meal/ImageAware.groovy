@@ -1,13 +1,16 @@
 package gql.health.mob.ui
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import groovy.transform.CompileDynamic
 
 import java.text.SimpleDateFormat
 
@@ -96,5 +99,13 @@ trait ImageAware {
         mediaScanIntent.setData(contentUri);
 
         //this.sendBroadcast(mediaScanIntent);
+    }
+
+    void paintImageOrDrawable(Context ctx, String imagePath, ImageView imageView, Drawable defaultDrawable) {
+        if (imagePath) {
+            loadPicFromPathInto(imagePath, imageView)
+        } else {
+            imageView.imageDrawable = defaultDrawable
+        }
     }
 }

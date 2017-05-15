@@ -41,18 +41,14 @@ class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder>
             .collect()
             .join(" + ")
 
-        paintMealImage(meal, holder)
+        paintImageOrDrawable(
+            this.context,
+            meal.imagePath,
+            holder.imageView,
+            findDrawableById(this.context, R.mipmap.ic_meal_default))
 
         holder.itemView.onClickListener = { View view ->
             Activities.startActivityWithExtra(view.context, MealNewActivity, "meal", meal)
-        }
-    }
-
-    void paintMealImage(Meal meal, ViewHolder holder) {
-        if (meal.imagePath) {
-            loadPicFromPathInto(meal.imagePath, holder.imageView)
-        } else {
-            holder.imageView.imageDrawable = findDrawableById(this.context, R.mipmap.ic_meal_default)
         }
     }
 
