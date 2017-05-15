@@ -17,11 +17,24 @@
     <string name="meal_list_empty_message">Add your first meal</string>
 
     <string name="action_mode_select_entries">Selected</string>
+
     <string-array name="meal_types">
         <item>Breakfast</item>
         <item>Snack</item>
         <item>Lunch</item>
         <item>Dinner</item>
     </string-array>
+
+    <string name="quantity_type_liter">liter</string>
+    <string name="quantity_type_milliliter">milliliter</string>
+    <string name="quantity_unit_">unit</string>
+    <string name="quantity_type_grams">gram</string>
+
+    <string name="food_type_meat">Meat/fish/eggs/beans</string>
+    <string name="food_type_fruit">Fruit and vegetables</string>
+    <string name="food_type_bread">Bread/rice/potatoes/pasta</string>
+    <string name="food_type_milk">Milk and dairy food</string>
+    <string name="food_type_fat">Foods and drinks high in fat and/or sugar</string>
+    <string name="food_type_healthy">Drinks low in fat and sugar</string>
 
 </resources>

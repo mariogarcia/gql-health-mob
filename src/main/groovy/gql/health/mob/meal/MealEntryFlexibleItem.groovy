@@ -10,6 +10,7 @@ import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.viewholders.FlexibleViewHolder
 import gql.health.mob.R
 import gql.health.mob.ui.FlexibleItem
+import gql.health.mob.ui.I18nEnabled
 import gql.health.mob.ui.MLRoundedImageView
 import groovy.transform.Canonical
 import groovy.transform.InheritConstructors
@@ -22,8 +23,8 @@ class MealEntryFlexibleItem extends FlexibleItem<ViewHolder> implements Drawable
     UUID id
     String description
     Double quantity
-    QuantityType quantityType
-    FoodType foodType
+    I18nEnabled quantityType
+    I18nEnabled foodType
 
     @Override
     int getLayoutRes() {
@@ -41,19 +42,21 @@ class MealEntryFlexibleItem extends FlexibleItem<ViewHolder> implements Drawable
 
     @Override
     void bindViewHolder(FlexibleAdapter adapter, ViewHolder holder, int position, List payloads) {
+        String i18nQuantity = holder.contentView.context.getString(quantityType.description)
+
         holder.description.text = description.capitalize()
-        holder.quantity.text = "${quantity} ${quantityType}"
+        holder.quantity.text = "${quantity} ${i18nQuantity}"
         holder.foodType.imageDrawable = resolveDrawableType(holder.itemView.context, foodType)
     }
 
-    Drawable resolveDrawableType(Context ctx, FoodType type) {
-        switch(type) {
-            case FoodType.BREAD_RICE:           return findDrawableById(ctx, R.mipmap.ic_meal_type_bread)
-            case FoodType.MEAT_FISH:            return findDrawableById(ctx, R.mipmap.ic_meal_type_steak)
-            case FoodType.MILK:                 return findDrawableById(ctx, R.mipmap.ic_meal_type_milk)
-            case FoodType.FAT_AND_SUGAR:        return findDrawableById(ctx, R.mipmap.ic_meal_type_sugar_fat)
-            case FoodType.HEALTHY_DRINKS:       return findDrawableById(ctx, R.mipmap.ic_meal_type_healthy_drinks)
-            case FoodType.FRUIT_AND_VEGETABLES: return findDrawableById(ctx, R.mipmap.ic_meal_type_vegetables)
+    Drawable resolveDrawableType(Context ctx, I18nEnabled type) {
+        switch(type.description) {
+            case R.string.food_type_bread:   return findDrawableById(ctx, R.mipmap.ic_meal_type_bread)
+            case R.string.food_type_meat:    return findDrawableById(ctx, R.mipmap.ic_meal_type_steak)
+            case R.string.food_type_milk:    return findDrawableById(ctx, R.mipmap.ic_meal_type_milk)
+            case R.string.food_type_fat:     return findDrawableById(ctx, R.mipmap.ic_meal_type_sugar_fat)
+            case R.string.food_type_healthy: return findDrawableById(ctx, R.mipmap.ic_meal_type_healthy_drinks)
+            case R.string.food_type_fruit:   return findDrawableById(ctx, R.mipmap.ic_meal_type_vegetables)
 
             default:
                 return findDrawableById(ctx, R.mipmap.ic_meal_type_default)

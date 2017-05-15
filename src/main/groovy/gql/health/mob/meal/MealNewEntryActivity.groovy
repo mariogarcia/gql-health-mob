@@ -13,6 +13,8 @@ import com.arasthel.swissknife.annotations.OnClick
 import com.arasthel.swissknife.annotations.OnUIThread
 import gql.health.mob.R
 import gql.health.mob.ui.Activities
+import gql.health.mob.ui.I18nEnabled
+import gql.health.mob.ui.I18nViewAdapter
 
 class MealNewEntryActivity extends AppCompatActivity {
 
@@ -38,22 +40,17 @@ class MealNewEntryActivity extends AppCompatActivity {
 
     @OnUIThread
     void loadEntryTypes() {
-        ArrayAdapter<QuantityType> spinnerAdapter =
-            new ArrayAdapter<>(
-                this,
-                R.layout.dropdown_item,
-                QuantityType.values() as QuantityType[]
-            )
+        unitType.adapter = new I18nViewAdapter(
+            this,
+            R.layout.dropdown_item,
+            AuxiliarTypes.QUANTITY_TYPES
+        )
 
-        unitType.adapter = spinnerAdapter
-        ArrayAdapter<FoodType> foodAdapter =
-                new ArrayAdapter<>(
-                        this,
-                        R.layout.dropdown_item,
-                        FoodType.values() as FoodType[]
-                )
-
-        foodType.adapter = foodAdapter
+        foodType.adapter = new I18nViewAdapter(
+            this,
+            R.layout.dropdown_item,
+            AuxiliarTypes.FOOD_TYPES
+        )
     }
 
     @OnBackground
@@ -61,14 +58,13 @@ class MealNewEntryActivity extends AppCompatActivity {
     void saveEntry(View view) {
         Meal meal = Activities.getExtraSerializable(this, Meal, "meal")
         MealEntry entry = new MealEntry(
-                id: UUID.randomUUID(),
-                description: description.text,
-                quantityType: unitType.selectedItem as QuantityType,
-                quantity: howMany.text.toDouble(),
-                foodType: foodType.selectedItem as FoodType)
+            id: UUID.randomUUID(),
+            description: description.text,
+            quantityType: unitType.selectedItem as I18nEnabled,
+            quantity: howMany.text.toDouble(),
+            foodType: foodType.selectedItem as I18nEnabled)
 
         MealService.INSTANCE.addEntry(meal.id, entry)
-
         this.finish()
     }
 

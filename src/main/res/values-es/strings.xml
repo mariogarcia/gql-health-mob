@@ -21,4 +21,16 @@
         <item>Comida</item>
         <item>Cena</item>
     </string-array>
+
+    <string name="quantity_type_grams">gramos</string>
+    <string name="quantity_type_liter">litros</string>
+    <string name="quantity_type_milliliter">mililitros</string>
+    <string name="quantity_unit_">unidades</string>
+
+    <string name="food_type_meat">Carne/Pescado/Huevos/Legumbres</string>
+    <string name="food_type_fruit">Frutas y verduras</string>
+    <string name="food_type_bread">Pan/Arroz/Patatas/Pasta</string>
+    <string name="food_type_milk">Leche y derivados</string>
+    <string name="food_type_fat">Comidas y bebidas con alto contenido en grasa y/o azucar</string>
+    <string name="food_type_healthy">Bebidas bajas en grasa y azucar</string>
 </resources>
