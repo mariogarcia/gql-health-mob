@@ -35,16 +35,24 @@ class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.ViewHolder>
 
         holder.date.text = meal.date.format('dd/MM/yyyy HH:mm')
         holder.type.text = meal.type.toLowerCase().capitalize()
-        holder.summary.text = meal.entries.description.collect().join(" + ")
+        holder.summary.text = meal
+            .entries
+            .description
+            .collect()
+            .join(" + ")
 
+        paintMealImage(meal, holder)
+
+        holder.itemView.onClickListener = { View view ->
+            Activities.startActivityWithExtra(view.context, MealNewActivity, "meal", meal)
+        }
+    }
+
+    void paintMealImage(Meal meal, ViewHolder holder) {
         if (meal.imagePath) {
             loadPicFromPathInto(meal.imagePath, holder.imageView)
         } else {
             holder.imageView.imageDrawable = findDrawableById(this.context, R.mipmap.ic_meal_default)
-        }
-
-        holder.itemView.onClickListener = { View view ->
-            Activities.startActivityWithExtra(view.context, MealNewActivity, "meal", meal)
         }
     }
 

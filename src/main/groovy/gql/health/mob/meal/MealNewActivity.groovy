@@ -202,13 +202,17 @@ class MealNewActivity extends AppCompatActivity implements
         paintEntries(entries)
     }
 
+    @OnUIThread
     void paintEntries(List<MealEntry> entries) {
         def adaptedEntries =
                 entries.collect(this.&convert) as List<MealEntryFlexibleItem>
 
         listAdapter.clear()
-        listAdapter.addItems(0, adaptedEntries)
-        listAdapter.notifyDataSetChanged()
+
+        if (adaptedEntries) {
+            listAdapter.addItems(0, adaptedEntries)
+            listAdapter.notifyDataSetChanged()
+        }
     }
 
     MealEntryFlexibleItem convert(MealEntry entry) {
