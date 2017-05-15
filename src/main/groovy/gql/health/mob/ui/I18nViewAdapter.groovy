@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.TextView
+import gql.health.mob.R
+import gql.health.mob.meal.DrawableAware
 import groovy.transform.InheritConstructors
 
 @InheritConstructors
-class I18nViewAdapter extends ArrayAdapter<I18nEnabled> {
+class I18nViewAdapter extends ArrayAdapter<I18nEnabled>
+        implements DrawableAware{
 
     @Override
     View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -28,12 +32,27 @@ class I18nViewAdapter extends ArrayAdapter<I18nEnabled> {
         String i18nDescription = parent.context.getString(object.description)
         String symbol = object.symbol
 
-        TextView dropItemView = convertView as TextView ?: LayoutInflater
-                .from(getContext())
-                .inflate(android.R.layout.simple_spinner_item, parent, false) as TextView
+        if (object.drawableImage == 0) {
+            View dropItemView = convertView ?: LayoutInflater
+                .from(context)
+                .inflate(R.layout.i18n_spinner_item, parent, false)
 
-        dropItemView.text = "$i18nDescription ${symbol ? '(' + symbol + ')' : ''}"
+            TextView textView = dropItemView.findViewById(R.id.i18n_description) as TextView
+            textView.text = "${i18nDescription.capitalize()} ${symbol ? '(' + symbol + ')' : ''}"
 
-        return dropItemView
+            return dropItemView
+        } else {
+            View dropItemView = LayoutInflater
+                    .from(context)
+                    .inflate(R.layout.i18n_spinner_item_w_image, parent, false)
+
+            TextView textView = dropItemView.findViewById(R.id.i18n_description) as TextView
+            ImageView imageView = dropItemView.findViewById(R.id.i18n_image) as ImageView
+
+            textView.text = "$i18nDescription ${symbol ? '(' + symbol + ')' : ''}"
+            imageView.imageDrawable = findDrawableById(context, object.drawableImage)
+
+            return dropItemView
+        }
     }
 }

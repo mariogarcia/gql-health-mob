@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="floating_button_background">#2980b9</color>
+    <color name="floating_button_background">#9eb228</color>
     <color name="font_primary">#666666</color>
     <color name="font_secondary">#999999</color>
     <color name="font_ternary">#CCCCCC</color>

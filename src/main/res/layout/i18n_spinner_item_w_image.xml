@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_list_row"
+    android:layout_width="match_parent"
+    android:layout_height="52dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="52sp"
+        android:layout_height="52sp"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="36dp"
+            android:layout_height="36dp">
+            <gql.health.mob.ui.MLRoundedImageView
+                android:id="@+id/i18n_image"
+                android:src="@mipmap/ic_meal_type_healthy_drinks"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/i18n_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:ellipsize="end"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:text="Carne/Blablabla/caca"
+            android:textSize="16sp"
+            android:layout_marginBottom="2dp"/>
+    </LinearLayout>
+</LinearLayout>
