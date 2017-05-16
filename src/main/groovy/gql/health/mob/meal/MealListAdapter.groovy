@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import gql.health.mob.R
-import gql.health.mob.ui.Activities
+import gql.health.mob.ui.DrawableAware
+import gql.health.mob.util.Activities
 import gql.health.mob.ui.ImageAware
 import groovy.transform.InheritConstructors
 import groovy.transform.TupleConstructor

@@ -9,8 +9,9 @@ import android.widget.TextView
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.viewholders.FlexibleViewHolder
 import gql.health.mob.R
+import gql.health.mob.ui.DrawableAware
 import gql.health.mob.ui.FlexibleItem
-import gql.health.mob.ui.I18nEnabled
+import gql.health.mob.util.I18nEnabled
 import gql.health.mob.ui.MLRoundedImageView
 import groovy.transform.Canonical
 import groovy.transform.InheritConstructors

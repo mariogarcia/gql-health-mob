@@ -3,7 +3,6 @@ package gql.health.mob.meal
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
 import com.arasthel.swissknife.SwissKnife
@@ -12,8 +11,8 @@ import com.arasthel.swissknife.annotations.OnBackground
 import com.arasthel.swissknife.annotations.OnClick
 import com.arasthel.swissknife.annotations.OnUIThread
 import gql.health.mob.R
-import gql.health.mob.ui.Activities
-import gql.health.mob.ui.I18nEnabled
+import gql.health.mob.util.Activities
+import gql.health.mob.util.I18nEnabled
 import gql.health.mob.ui.I18nViewAdapter
 
 class MealNewEntryActivity extends AppCompatActivity {

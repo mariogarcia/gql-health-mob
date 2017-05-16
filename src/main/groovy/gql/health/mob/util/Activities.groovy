@@ -1,4 +1,4 @@
-package gql.health.mob.ui
+package gql.health.mob.util
 
 import android.app.Activity
 import android.app.AlertDialog

@@ -20,7 +20,8 @@ import com.arasthel.swissknife.annotations.OnClick
 import com.arasthel.swissknife.annotations.OnUIThread
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import gql.health.mob.R
-import gql.health.mob.ui.Activities
+import gql.health.mob.ui.DrawableAware
+import gql.health.mob.util.Activities
 import gql.health.mob.ui.ImageAware
 import gql.health.mob.ui.SimpleDividerItemDecoration
 

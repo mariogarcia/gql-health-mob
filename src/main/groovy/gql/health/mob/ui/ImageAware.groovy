@@ -10,7 +10,7 @@ import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import groovy.transform.CompileDynamic
+import gql.health.mob.util.AlbumStorageDirFactory
 
 import java.text.SimpleDateFormat
 

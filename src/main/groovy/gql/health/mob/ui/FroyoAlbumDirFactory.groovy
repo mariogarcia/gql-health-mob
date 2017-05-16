@@ -1,7 +1,6 @@
 package gql.health.mob.ui
 
-import java.io.File;
-
+import gql.health.mob.util.AlbumStorageDirFactory
 import android.os.Environment;
 
 public final class FroyoAlbumDirFactory extends AlbumStorageDirFactory {

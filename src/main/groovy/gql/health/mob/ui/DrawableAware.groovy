@@ -1,4 +1,4 @@
-package gql.health.mob.meal
+package gql.health.mob.ui
 
 import android.content.Context
 import android.graphics.drawable.Drawable

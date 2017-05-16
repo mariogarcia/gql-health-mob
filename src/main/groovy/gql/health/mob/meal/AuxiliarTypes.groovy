@@ -1,7 +1,7 @@
 package gql.health.mob.meal
 
 import gql.health.mob.R
-import gql.health.mob.ui.I18nEnabled
+import gql.health.mob.util.I18nEnabled
 
 class AuxiliarTypes {
 

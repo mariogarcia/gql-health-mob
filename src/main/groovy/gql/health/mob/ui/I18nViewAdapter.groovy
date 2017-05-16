@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import gql.health.mob.R
-import gql.health.mob.meal.DrawableAware
+import gql.health.mob.util.I18nEnabled
 import groovy.transform.InheritConstructors
 
 @InheritConstructors
