@@ -12,6 +12,7 @@ import com.arasthel.swissknife.annotations.OnBackground
 import com.arasthel.swissknife.annotations.OnClick
 import com.arasthel.swissknife.annotations.OnUIThread
 import gql.health.mob.R
+import gql.health.mob.security.Checker
 import gql.health.mob.util.Activities
 
 class MealListActivity extends AppCompatActivity {
@@ -43,6 +44,7 @@ class MealListActivity extends AppCompatActivity {
 
     @OnBackground
     void loadMeals() {
+        Checker.checkCredentials(this)
         paintMealList(MealService.INSTANCE.listAll())
     }
 
@@ -54,9 +56,7 @@ class MealListActivity extends AppCompatActivity {
         adapter.meals.addAll(meals)
         adapter.notifyDataSetChanged()
 
-        if (meals) {
-            textView.visible(false)
-        }
+        textView.visible(!meals)
     }
 
     @OnBackground

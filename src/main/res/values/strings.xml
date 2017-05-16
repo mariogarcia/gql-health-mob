@@ -36,5 +36,9 @@
     <string name="food_type_milk">Milk and dairy food</string>
     <string name="food_type_fat">Foods and drinks high in fat and/or sugar</string>
     <string name="food_type_healthy">Drinks low in fat and sugar</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="account_type">io.helthyx.android.auth</string>
 
 </resources>

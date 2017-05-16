@@ -70,6 +70,7 @@ class MealNewActivity extends AppCompatActivity implements
 
     @OnBackground
     void loadInformation() {
+        Checker.checkCredentials(this)
         Meal refreshed = MealService.INSTANCE.findMealById(currentMeal.id)
 
         paintInformation(refreshed)

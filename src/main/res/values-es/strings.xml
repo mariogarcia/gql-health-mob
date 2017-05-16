@@ -33,4 +33,7 @@
     <string name="food_type_milk">Leche y derivados</string>
     <string name="food_type_fat">Comidas y bebidas con alto contenido en grasa y/o azucar</string>
     <string name="food_type_healthy">Bebidas bajas en grasa y azucar</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
 </resources>
